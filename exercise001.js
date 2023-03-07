@@ -12,3 +12,30 @@ const promise = new Promise((resolve, reject) => {
 });
 
 // Your solution(s) to exercise001 here!
+promise.then((response) => {
+	console.log(`Yay! Promise resolved with response: ${response}`);
+}).catch((error) => {
+	console.log(`Boo. Promise rejected with response: ${error}`);
+})
+
+const fetchResult = (message) => {
+	return new Promise(function (resolve, reject) {
+		setTimeout(function () {
+			resolve (message);
+		}, 2000);
+	})
+}
+
+const getPromiseResponse = async () => {
+	const randomInt = Math.floor(Math.random() * 10);
+
+	if (randomInt % 2 === 0) {
+		// Success
+		console.log(await fetchResult('Yay! Promise resolved with response: done'));
+	} else {
+		// Failure
+		console.log(await fetchResult('Boo. Promise rejected with response: error'));
+	}
+
+}
+getPromiseResponse();
